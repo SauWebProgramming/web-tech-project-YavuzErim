@@ -1,0 +1,361 @@
+/* Global Reset ve Temel Ayarlar */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-dark: #1e1e1e;
+    --card-background: #2a2a2a;
+    --text-light: #f8f9fa;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header ve Navigasyon Stilleri */
+.site-header {
+    background-color: #000;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hamburger Menü Butonu Stili (Mobil için) */
+.menu-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Varsayılan olarak gizli */
+}
+
+/* Navigasyon Listesi (Masaüstü) */
+.main-nav .nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav .nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    display: block;
+}
+
+.main-nav .nav-link:hover, .main-nav .nav-link.active {
+    background-color: var(--primary-color);
+}
+
+/* Ana İçerik ve Bölüm Stilleri */
+#app-content {
+    padding: 30px 0;
+    min-height: calc(100vh - 120px); /* Footer ile beraber minimum yükseklik */
+}
+
+.section-container {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    /* BAŞLIĞI VE KONTROLLERİ SOLA HİZALAMA */
+    text-align: left; 
+}
+
+/* BAŞLIĞI SOLA HİZALI TUT */
+#filter-area h2 {
+    text-align: left; /* Başlık sola hizalı kalsın */
+    margin-bottom: 10px; 
+    /* Kontrol kutularıyla aynı hizada başlaması için marjin ekleniyor (50px olarak ayarlandı) */
+    margin-left: 50px; 
+}
+
+/* Arama ve Filtreleme Kontrolleri (Flexbox Kullanımı) */
+.filter-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; 
+    /* YATAY AYAR: Max genişlik belirlenip sola margin ile itiliyor. */
+    max-width: 650px; /* Kutucukların maksimum genişliğini düşürdük */
+    margin: 10px 0 0 50px; /* SOLA DOĞRU KAYDIRMA: 50px soldan boşluk bırakıldı */
+}
+
+.search-input, .filter-select, .filter-input {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: var(--text-light);
+    font-size: 16px;
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.search-input {
+    flex-basis: 50%; /* Daha fazla yer kaplaması için */
+}
+
+/* Medya Kartları (CSS Grid Kullanımı) */
+.media-grid {
+    display: grid;
+    gap: 20px;
+    /* Masaüstü için 4 sütun */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding-top: 20px;
+}
+
+.media-card {
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--primary-color);
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.card-meta {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: color 0.2s;
+    align-self: flex-end; /* Sağ alta hizalama */
+}
+
+.favorite-btn.is-favorite {
+    color: gold;
+}
+
+/* Detay Sayfası Stilleri */
+#media-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+}
+
+.detail-header {
+    display: flex;
+    gap: 30px;
+}
+
+.detail-poster {
+    width: 250px;
+    height: 375px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.detail-info {
+    flex-grow: 1;
+}
+
+.detail-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.detail-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.back-button {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* Footer Stilleri */
+.site-footer {
+    background-color: #000;
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+/* Responsive Tasarım (Media Queries) */
+
+/* Mobil Cihazlar (767px ve altı) */
+@media (max-width: 767px) {
+    
+    /* Hamburger Menü Gösterimi */
+    .menu-toggle {
+        display: block; /* Butonu mobil cihazda göster */
+    }
+
+    /* Navigasyonu gizle */
+    .main-nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Header yüksekliği kadar aşağı kaydır */
+        left: 0;
+        background-color: #000;
+        z-index: 10;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Navigasyon Aktifse Göster */
+    .main-nav.is-open {
+        display: block;
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .main-nav .nav-link {
+        margin: 0;
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+    }
+    
+    /* Header düzeni */
+    .site-header .container {
+        flex-direction: row;
+        justify-content: space-between; /* Başlık ve butonu ayır */
+    }
+
+    /* Filtre ve Arama Alanı (Mobil için tam genişlik) */
+    #filter-area h2 {
+        margin-left: 0; /* Mobil'de başlığı sıfırla */
+        text-align: center; /* Mobil'de başlığı ortala */
+    }
+    
+    .filter-controls {
+        flex-direction: column; 
+        gap: 10px;
+        max-width: none; /* Mobil'de ortalamayı kaldır, tam genişlik kullan */
+        margin: 10px 0 0 0; /* Mobil margin resetle */
+        padding: 0 10px; /* Kenar boşluğu ekle */
+    }
+    
+    .search-input, .filter-select, .filter-input {
+        width: 100%;
+        min-width: unset;
+        flex-basis: auto;
+    }
+
+    /* Medya Grid (Kartlar) */
+    .media-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Daha küçük kartlar */
+    }
+    
+    .card-image {
+        height: 200px; 
+    }
+
+    /* Detay Sayfası */
+    .detail-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detail-poster {
+        width: 100%;
+        height: auto;
+    }
+    
+    .detail-title {
+        font-size: 2em;
+    }
+}
+
+/* Tablet ve Küçük Masaüstü (768px ve üzeri) */
+@media (min-width: 768px) {
+    .media-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    .detail-header {
+        flex-direction: row; /* Detay sayfasında görsel ve metni yan yana getir */
+    }
+    
+    /* Masaüstü görünümünde Hamburger Menüyü gizle */
+    .menu-toggle {
+        display: none; 
+    }
+    
+    .main-nav {
+        display: block !important; /* Masaüstünde menü hep açık */
+    }
+}

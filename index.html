@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film & Dizi Kitaplığı - SPA Projesi</title>
+    <!-- Fontlar için basit bir import -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Stil dosyasını bağlama -->
+    <link rel="stylesheet" href="style.css"> 
+    <!-- Favorilerim butonu ve hamburger ikonları için ikon kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>Medya Kitaplığı</h1>
+            
+            <!-- Mobil Navigasyon Butonu (Sadece küçük ekranlarda görünür) -->
+            <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Ana navigasyon menüsü -->
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link" data-route="home">Anasayfa</a></li>
+                    <li><a href="#favorites" class="nav-link" data-route="favorites">Favorilerim <i class="fa-solid fa-star"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app-content">
+        <div class="container">
+
+            <!-- Arama ve Sıralama BÖLÜMÜ -->
+            <section id="filter-area" class="section-container">
+                <h2>Medya Ara ve Sırala</h2>
+                <div class="filter-controls">
+                    <!-- Arama Inputu -->
+                    <input type="text" id="search-input" placeholder="Film/Dizi adına göre ara..." class="search-input">
+                    
+                    <!-- Tür Filtresi -->
+                    <select id="type-filter" class="filter-select">
+                        <option value="all">Tüm Türler</option>
+                        <option value="Film">Film</option>
+                        <option value="Dizi">Dizi</option>
+                    </select>
+                    
+                    <!-- EKSİK KATEGORİ FİLTRESİ (YENİ EKLENDİ) -->
+                    <select id="genre-filter" class="filter-select">
+                        <option value="all">Tüm Kategoriler</option>
+                        <!-- Seçenekler JS ile dinamik olarak doldurulacak -->
+                    </select>
+                    
+                    <!-- TEK SIRALAMA SEÇENEĞİ: IMDb Puanı ve Çıkış Yılı (Artan/Azalan) -->
+                    <select id="sort-combined" class="filter-select">
+                        <option value="none">Sırala</option>
+                        <option value="rating_desc">IMDb Puanı (Azalan)</option>
+                        <option value="rating_asc">IMDb Puanı (Artan)</option>
+                        <option value="year_desc">Çıkış Yılı (Azalan)</option>
+                        <option value="year_asc">Çıkış Yılı (Artan)</option>
+                    </select>
+
+                </div>
+            </section>
+
+            <!-- Medya Kartlarının Listeleneceği Alan -->
+            <section id="media-list-section" class="section-container">
+                <div id="media-list" class="media-grid">
+                    <p class="loading-message">Medya bilgileri yükleniyor...</p>
+                </div>
+            </section>
+            
+            <!-- Favorilerim Bölümü (Başlangıçta gizli) -->
+            <section id="favorites-section" class="section-container" style="display: none;">
+                <h2>Favori Medyalarım</h2>
+                <div id="favorites-list" class="media-grid">
+                    <p class="empty-message">Henüz favorilere eklenmiş bir şey yok.</p>
+                </div>
+            </section>
+            
+            <!-- Detay Sayfası Alanı (Başlangıçta gizli) -->
+            <section id="detail-section" class="section-container" style="display: none;">
+                <button id="back-button" class="back-button">&larr; Geri Dön</button>
+                <div id="media-detail">
+                    <!-- Detay bilgileri buraya yüklenecek -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Web Teknolojileri Ödevi - SPA Projesi</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript dosyasını en sona ekleyerek performansı artırma -->
+    <script src="app.js"></script>
+
+</body>
+</html>
